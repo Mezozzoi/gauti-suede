@@ -1,0 +1,242 @@
+<!doctype html>
+<html class="no-js" lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Portfolio</title>
+  <meta name="description" content="Welcome to my portfolio website! I am a passionate and skilled designer dedicated to crafting visually stunning and user-centric experiences.">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta property="og:title" content="Portfolio">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="">
+  <meta property="og:image" content="icon.png">
+  <meta property="og:description" content="Welcome to my portfolio website! I am a passionate and skilled designer dedicated to crafting visually stunning and user-centric experiences." />
+
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="apple-touch-icon" href="/icon.png">
+  <link rel="icon" href="/favicon.ico">
+
+  <link rel="stylesheet preload" as="style" href="/css/vendor/normalize.css">
+  <link rel="stylesheet preload" as="style" href="/css/vendor/boilerplate.css">
+  <link rel="stylesheet preload" as="style" href="/css/vendor/swiper-bundle.min.css">
+  <link rel="stylesheet preload" as="style" href="/css/main.scss">
+
+  <meta name="theme-color" content="#1a1c21">
+</head>
+
+<body>
+  <header class="navbar">
+    <a class="logo" href=""><img src="icon.png" alt=""></a>
+
+    <nav class="nav-links">
+      <a class="nav-link" href="#about">About</a>
+      <a class="nav-link" href="#projects">Projects</a>
+      <a class="nav-link" href="#contact">Contact</a>
+    </nav>
+
+    <button class="toggle-burger"><span class="burger-icon"></span></button>
+  </header>
+
+  <nav class="side-navbar">
+    <div class="links">
+      <a class="nav-link" href="#about">About</a>
+      <a class="nav-link" href="#projects">Projects</a>
+      <a class="nav-link" href="#contact">Contact</a>
+    </div>
+
+    <div class="contacts">
+      <div class="contact"><a class="content" href="tel:+972546917050">(+972)54691-70-50</a></div>
+      <div class="contact"><a class="content" href="mailto:tachles.studio@gmail.com">tachles.studio@gmail.com</a></div>
+    </div>
+  </nav>
+
+  <section id="home">
+    <div class="container">
+      <span class="logo-text">I am</span>
+      <img class="logo" src="img/logo.png" alt="">
+      <span class="logo-text">Web designer</span>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="container">
+      <div class="selfies">
+        <div><img src="/img/selfie.png" alt=""></div>
+      </div>
+
+      <div class="description">
+        <span class="header">Designer UI/UX</span>
+        <p class="content">Designed web applications as registration systems, automatically monthly newsletters, community centers websites,
+
+          IOS application and landing pages for local business.</p>
+
+        <div class="skills">
+          <template style="display: none" class="svg-pi-template">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" class="svg-pi">
+              <defs>
+                <style>
+                  :root {
+                    --progress: 0;
+                  }
+
+                  .svg-pi {
+                    width: 100px;
+                    height: 100px;
+                    transform: scale(-1, 1) rotate(-90deg);
+                  }
+
+                  .svg-pi-indicator {
+                    stroke: #ff6b6c;
+                    stroke-dasharray: 292.17px;
+                    stroke-linecap: round;
+                  }
+
+                  .svg-pi-indicator {
+                    cx: 50px;
+                    cy: 50px;
+                    r: 46.5px;
+                    fill: transparent;
+                    stroke-width: 7px;
+                  }
+
+                  .svg-pi-indicator {
+                    stroke-dashoffset: calc(292.17px * (1 - var(--progress)));
+                  }
+                </style>
+              </defs>
+              <circle shape-rendering="auto" class="svg-pi-indicator" />
+            </svg>
+          </template>
+          <div class="skill" data-progress="95"><span>Ps</span></div>
+          <div class="skill" data-progress="90"><span>Ai</span></div>
+          <div class="skill" data-progress="85"><span>Id</span></div>
+          <div class="skill" data-progress="75"><span>Xd</span></div>
+          <div class="skill" data-progress="82"><span>Ae</span></div>
+          <div class="skill" data-progress="91"><span>Pr</span></div>
+          <div class="skill" data-progress="70"><img src="/img/figma.png" title="Figma" alt="Figma"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="container">
+      <div class="projects-slider">
+        <div class="projects-button-prev"></div>
+
+        <div class="projects-slider-container">
+          <div class="swiper-wrapper">
+            <template class="project-preview-template" style="display: none">
+              <div class="swiper-slide"><img src="" alt=""></div>
+            </template>
+          </div>
+        </div>
+
+        <div class="projects-button-next"></div>
+      </div>
+
+      <div class="project-details">
+        <span class="title">
+          Bhii
+        </span>
+
+        <span class="description">
+          Bacon ipsum dolor amet beef ribs pancetta tenderloin, andouille landjaeger burgdoggen tri-tip pork
+          belly filet mignon porchetta sirloin shoulder
+        </span>
+      </div>
+
+      <button class="view-project"><span>View project</span></button>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="container">
+        <form class="contact-form">
+          <span class="header">Contact form</span>
+          <input class="contact-form-input" type="text" name="name" required placeholder="Your name">
+          <input class="contact-form-input" type="text" name="phone" pattern="^\+?\d+$" required placeholder="Your phone">
+          <input class="contact-form-input" type="email" name="email" required placeholder="Your email">
+          <input class="contact-form-input" type="text" name="message" required placeholder="Message">
+          <button class="submit-contact-form" type="submit"><span>Send message</span></button>
+
+          <div class="contacts">
+            <div class="contact"><span class="label">Phone: </span><a class="content" href="tel:+972546917050">(+972)54691-70-50</a></div>
+            <div class="contact"><span class="label">E-mail: </span><a class="content" href="mailto:tachles.studio@gmail.com">tachles.studio@gmail.com</a></div>
+          </div>
+        </form>
+
+      <div class="reviews-slider">
+        <div class="reviews-button-prev"></div>
+
+        <div class="reviews-slider-container">
+          <div class="swiper-wrapper">
+            <template class="review-template" style="display: none;">
+              <div class="swiper-slide">
+                <div class="review">
+                  <span class="review-content"></span>
+                  <div class="review-details">
+                    <img class="review-avatar" src="" alt="">
+                    <div class="review-title">
+                      <span class="review-name"></span>
+                      <span class="review-company"></span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </template>
+          </div>
+        </div>
+
+        <div class="reviews-button-next"></div>
+      </div>
+    </div>
+  </section>
+
+  <aside class="socials">
+    <a class="social-link" href="https://www.facebook.com/vladimir.belenkii" title="Facebook"><svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 1000 1000" xml:space="preserve"><g id="facebook"><path d="M770.5,10.2l-149,0.1c0,0-3-0.2-8.4-0.2c-30.6,0-185.1,8.5-227.2,174.2c-0.7,1.8-14.8,43.3-15,139.8H229.5c-12.5,0-22.7,10.2-22.7,22.7V477c0,12.5,10.2,22.7,22.7,22.7h154.5v467.6c0,12.5,10.2,22.7,22.7,22.7h177c12.5,0,22.7-10.2,22.7-22.7V500.1h155c12.5,0,22.7-10.2,22.7-22.7V346.7c0-12.5-10.2-22.7-22.7-22.7H606.8v-55.9c0-37.2,23.6-77,89.9-77h73.8c12.5,0,22.7-10.2,22.7-22.7V32.9C793.2,20.3,783,10.2,770.5,10.2z M747.8,145.8h-51.1c-93.5,0-135.3,61.5-135.3,122.4v78.6c0,12.5,10.2,22.7,22.7,22.7h154.7v85.3h-155c-12.5,0-22.7,10.2-22.7,22.7v467.2H429.5V477c0-12.5-10.2-22.7-22.7-22.7H252.2v-84.8h141.5c6.1,0,11.9-2.5,16.2-6.8c4.3-4.4,6.6-10.2,6.5-16.3c-2-103.3,12.2-146.8,12.9-149C462.8,65.7,578.4,55.4,613.1,55.4c3.2,0,5,0.1,6.9,0.2h127.8V145.8L747.8,145.8z"/></g></svg></a>
+    <a class="social-link" href="https://www.linkedin.com/in/vladimir-belenkii-470b5314b/" title="LinkedIn"><svg fill="#000000" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 45.959 45.959" xml:space="preserve"><g><g><path d="M5.392,0.492C2.268,0.492,0,2.647,0,5.614c0,2.966,2.223,5.119,5.284,5.119c1.588,0,2.956-0.515,3.957-1.489 c0.96-0.935,1.489-2.224,1.488-3.653C10.659,2.589,8.464,0.492,5.392,0.492z M7.847,7.811C7.227,8.414,6.34,8.733,5.284,8.733 C3.351,8.733,2,7.451,2,5.614c0-1.867,1.363-3.122,3.392-3.122c1.983,0,3.293,1.235,3.338,3.123 C8.729,6.477,8.416,7.256,7.847,7.811z"/><path d="M0.959,45.467h8.988V12.422H0.959V45.467z M2.959,14.422h4.988v29.044H2.959V14.422z"/><path d="M33.648,12.422c-4.168,0-6.72,1.439-8.198,2.792l-0.281-2.792H15v33.044h9.959V28.099c0-0.748,0.303-2.301,0.493-2.711 c1.203-2.591,2.826-2.591,5.284-2.591c2.831,0,5.223,2.655,5.223,5.797v16.874h10v-18.67 C45.959,16.92,39.577,12.422,33.648,12.422z M43.959,43.467h-6V28.593c0-4.227-3.308-7.797-7.223-7.797 c-2.512,0-5.358,0-7.099,3.75c-0.359,0.775-0.679,2.632-0.679,3.553v15.368H17V14.422h6.36l0.408,4.044h1.639l0.293-0.473 c0.667-1.074,2.776-3.572,7.948-3.572c4.966,0,10.311,3.872,10.311,12.374V43.467z"/></g></g></svg></a>
+    <a class="social-link" href="https://www.instagram.com/gautisuede/" title="Instagram"><svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 64 64" xml:space="preserve"><g><circle cx="48.8" cy="15.2" r="3.8"/> <path d="M32,16.1c-8.8,0-15.9,7.1-15.9,15.9S23.2,47.9,32,47.9S47.9,40.8,47.9,32S40.8,16.1,32,16.1z M32,42.9 c-6,0-10.9-4.9-10.9-10.9S26,21.1,32,21.1S42.9,26,42.9,32S38,42.9,32,42.9z"/> <path d="M63.8,19.7c-0.1-3.1-0.6-5.6-1.5-8c-0.9-2.4-2.2-4.3-4-6.1c-1.8-1.8-3.7-3-6.1-4c-2.4-0.9-4.8-1.4-8-1.5C41.1,0,40,0,32,0 s-9.1,0-12.3,0.2c-3.1,0.1-5.6,0.6-8,1.5c-2.4,0.9-4.3,2.2-6.1,4c-1.8,1.8-3,3.7-4,6.1c-0.9,2.4-1.4,4.8-1.5,8C0,22.9,0,24,0,32 s0,9.1,0.2,12.3c0.1,3.1,0.6,5.6,1.5,8c0.9,2.4,2.2,4.3,4,6.1c1.8,1.8,3.7,3,6.1,4c2.4,0.9,4.8,1.4,8,1.5C22.9,64,24,64,32,64 s9.1,0,12.3-0.2c3.1-0.1,5.6-0.6,8-1.5c2.4-0.9,4.3-2.2,6.1-4c1.8-1.8,3-3.7,4-6.1c0.9-2.4,1.4-4.8,1.5-8C64,41.1,64,40,64,32 S64,22.9,63.8,19.7z M58.8,44c-0.1,2.6-0.5,4.5-1.2,6.4c-0.7,1.7-1.5,3.1-2.8,4.4s-2.6,2.2-4.4,2.8c-1.8,0.7-3.8,1.1-6.4,1.2 C41,59,39.9,59,32,59s-9,0-12-0.2c-2.6-0.1-4.5-0.5-6.4-1.2c-1.7-0.7-3.1-1.5-4.4-2.8s-2.2-2.6-2.8-4.4c-0.7-1.8-1.1-3.8-1.2-6.4 C5,40.9,5,39.9,5,32s0-8.9,0.2-12c0.1-2.6,0.5-4.5,1.2-6.4c0.7-1.7,1.5-3.1,2.8-4.4s2.6-2.2,4.4-2.8c1.8-0.7,3.8-1.1,6.4-1.2 C23,5,24.1,5,32,5s9,0,12,0.2c2.6,0.1,4.5,0.5,6.4,1.2c1.7,0.7,3.1,1.5,4.4,2.8s2.2,2.6,2.8,4.4c0.7,1.8,1.1,3.8,1.2,6.4 C59,23,59,24.1,59,32S59,41,58.8,44z"/></g></svg></a>
+  </aside>
+
+  <div class="scroll">
+    <div class="scroll-up"></div>
+    <span>Scroll</span>
+    <div class="scroll-down"></div>
+  </div>
+
+  <div class="modal-container">
+    <div class="modal">
+      <div class="header">
+        <div class="close-modal"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16"><path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/></svg></div>
+      </div>
+
+      <div class="body">
+        <div class="icon"></div>
+        <span class="title"></span>
+        <span class="message"></span>
+      </div>
+
+      <div class="footer">
+        <button class="close-modal"><span>Close</span></button>
+      </div>
+    </div>
+  </div>
+
+  <script src="/js/vendor/modernizr-3.11.2.min.js"></script>
+  <script src="/js/vendor/plugins.js"></script>
+  <script src="/js/main.js"></script>
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0L508HRS3E"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-0L508HRS3E');
+  </script>
+</body>
+
+</html>

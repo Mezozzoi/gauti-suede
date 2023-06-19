@@ -1,0 +1,33 @@
+{
+  "name": "vovadesigner-express",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build-watch": "parcel watch public/index.html",
+    "start-watch": "nodemon app.js",
+    "dev": "concurrently --kill-others \"npm run start-watch\" \"npm run build-watch\"",
+    "build": "parcel build --no-minify public/index.html",
+    "start": "npm run build && node app.js"
+  },
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.12",
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "dotenv": "^16.1.4",
+    "express": "~4.16.1",
+    "express-fileupload": "^1.4.0",
+    "express-limit": "^1.0.0",
+    "express-rate-limit": "^6.7.0",
+    "jsonwebtoken": "^9.0.0",
+    "morgan": "~1.9.1",
+    "nanoid": "^4.0.2",
+    "nodemailer": "^6.9.3"
+  },
+  "devDependencies": {
+    "concurrently": "^8.1.0",
+    "nodemon": "^2.0.22",
+    "parcel-bundler": "^1.12.5",
+    "sass": "^1.62.1"
+  }
+}

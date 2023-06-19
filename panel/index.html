@@ -1,0 +1,342 @@
+<!doctype html>
+<html lang="en" data-bs-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="icon" href="/favicon.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.min.js" crossorigin="anonymous"></script>
+    <title>Admin panel</title>
+</head>
+<body>
+<style>
+    body {
+        font-family: sans-serif;
+    }
+
+    .container {
+        display: flex;
+        gap: 20px;
+        padding: 20px;
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        margin-bottom: 30px;
+    }
+
+    .project > .preview > img {
+        object-fit: contain;
+        width: 100px;
+        height: 150px;
+    }
+
+    .review > .avatar > img {
+        object-fit: contain;
+        width: 50px;
+        height: 50px;
+    }
+
+    th.id {
+        max-width: 100px;
+        text-overflow: ellipsis;
+        overflow: hidden;
+    }
+
+    .zoom-image {
+        width: 100%;
+        height: 100%;
+        max-height: 500px;
+        object-fit: contain;
+    }
+
+    .project .preview img, .review .avatar img {
+        cursor: pointer;
+    }
+</style>
+
+<ul class="nav nav-tabs p-2 pb-0" id="myTab" role="tablist">
+    <li class="nav-item" role="presentation">
+        <button class="nav-link active" id="nav-projects-tab" data-bs-toggle="tab" data-bs-target="#nav-projects" type="button" role="tab">Projects</button>
+    </li>
+    <li class="nav-item" role="presentation">
+        <button class="nav-link" id="nav-reviews-tab" data-bs-toggle="tab" data-bs-target="#nav-reviews" type="button" role="tab">Reviews</button>
+    </li>
+</ul>
+
+<div class="container tab-content">
+    <div class="projects container col-10 tab-pane active fade show" role="tabpanel" id="nav-projects">
+        <form class="border rounded p-3 container col-8">
+            <div class="form-group">
+                <label for="title" class="form-label">Title</label>
+                <input id="title" class="form-control form-control-sm" placeholder="Title" name="title" required type="text">
+            </div>
+            <div class="form-group">
+                <label for="description" class="form-label">Description</label>
+                <input id="description" class="form-control form-control-sm" placeholder="Description" name="description" required type="text">
+            </div>
+            <div class="form-group">
+                <label for="preview" class="form-label">Preview</label>
+                <input id="preview" class="form-control form-control-sm" name="preview" required type="file" accept=".png,.jpg,.jpeg">
+            </div>
+            <div class="form-group">
+                <label for="file" class="form-label">File</label>
+                <input id="file" class="form-control form-control-sm" name="file" required type="file">
+            </div>
+            <button type="submit" class="btn btn-secondary">Add project</button>
+        </form>
+        
+        <table class="table table-striped table-bordered">
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Title</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Preview</th>
+                    <th scope="col">File</th>
+                    <th scope="col">Actions</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <template style="display:none;" class="project-template">
+                    <tr class="project">
+                        <th scope="row" class="id"></th>
+                        <td class="title"></td>
+                        <td class="description"></td>
+                        <td class="preview"><img src="" data-bs-toggle="modal" data-bs-target="#zoom-modal" alt=""></td>
+                        <td class="file"><a href=""></a></td>
+                        <td class="actions" style="text-align: center"><button class="btn btn-danger delete" data-bs-toggle="modal" data-bs-target="#delete-modal"><svg style="height: 20px; width: 20px;" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16"><path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6Z"/><path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1ZM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118ZM2.5 3h11V2h-11v1Z"/></svg></button></td>
+                    </tr>
+                </template>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="reviews tab-pane fade col-10 container" role="tabpanel" id="nav-reviews">
+        <form class="border rounded p-3 col-8 container">
+            <div class="form-group">
+                <label for="name" class="form-label">Name</label>
+                <input id="name" class="form-control form-control-sm" name="name" placeholder="Name" required type="text">
+            </div>
+            <div class="form-group">
+                <label for="company" class="form-label">Company</label>
+                <input id="company" class="form-control form-control-sm" name="company" placeholder="Company" required type="text">
+            </div>
+            <div class="form-group">
+                <label for="avatar" class="form-label">Avatar</label>
+                <input id="avatar" class="form-control form-control-sm" name="avatar" required type="file" accept=".png,.jpg,.jpeg">
+            </div>
+            <div class="form-group">
+                <input id="rtl" class="form-check-input" name="rtl" title="Check if content text is read right-to-left" type="checkbox">
+                <label for="rtl" class="form-check-label" title="Check if content text is read right-to-left" style="margin-left: 5px">RTL</label>
+            </div>
+            <div class="form-group">
+                <label for="content" class="form-label">Content</label>
+                <textarea id="content" class="form-control form-control-sm" name="content" placeholder="Content" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-secondary">Add review</button>
+        </form>
+
+        <table class="table table-striped table-bordered">
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Company</th>
+                    <th scope="col">Avatar</th>
+                    <th scope="col">RTL</th>
+                    <th scope="col">Content</th>
+                    <th scope="col">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <template style="display:none;" class="review-template">
+                    <tr class="review">
+                        <th scope="row" class="id"></th>
+                        <td class="name"></td>
+                        <td class="company"></td>
+                        <td class="avatar"><img src="" data-bs-toggle="modal" data-bs-target="#zoom-modal" alt=""></td>
+                        <td class="rtl"></td>
+                        <td class="content"></td>
+                        <td class="actions" style="text-align: center"><button class="btn btn-danger delete" data-bs-toggle="modal" data-bs-target="#delete-modal"><svg style="height: 20px; width: 20px;" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16"><path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6Z"/><path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1ZM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118ZM2.5 3h11V2h-11v1Z"/></svg></button></td>
+                    </tr>
+                </template>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="modal fade" id="delete-modal" tabindex="-1" data-id>
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Deleting row</h5>
+                <button type="button" class="close btn-close"  data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <p>Are you sure you want to delete row <b class="id"></b>?</p>
+            </div>
+            <div class="modal-footer">
+                <button id="confirm-delete" type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#delete-modal">Delete</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="zoom-modal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close btn-close"  data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <img src="" class="zoom-image" alt="">
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    const projectsTable = document.querySelector(".projects > table");
+    const reviewsTable = document.querySelector(".reviews > table");
+
+    const projectTemplate = document.querySelector(".project-template").content;
+    const refreshProjectsTable = async () => {
+        const projects = await (await fetch("/panel/projects", {method: "GET"})).json() || [];
+        projectsTable.querySelectorAll(".project").forEach(e => e.remove());
+
+        projects.forEach(e => {
+            const clone = projectTemplate.cloneNode(true);
+
+            clone.querySelector(".id").innerText = e.id;
+            clone.querySelector(".id").title = e.id;
+            clone.querySelector(".title").innerText = e.title;
+            clone.querySelector(".description").innerText = e.description;
+            clone.querySelector(".preview > img").src = "/projects/previews/" + e.preview;
+            clone.querySelector(".preview > img").title = e.preview;
+            clone.querySelector(".preview > img").addEventListener("click", (ev) => onZoomImage(ev.currentTarget));
+            clone.querySelector(".file > a").href = "/projects/files/" + e.file;
+            clone.querySelector(".file > a").innerText = e.file;
+            clone.querySelector(".file > a").title = e.file;
+            clone.querySelector(".actions > .delete").dataset.id = e.id;
+            clone.querySelector(".actions > .delete").dataset.related = "project";
+            clone.querySelector(".actions > .delete").addEventListener("click", (ev) => onShowDeleteModal(ev.currentTarget));
+
+            projectsTable.querySelector("tbody").appendChild(clone);
+        });
+    }
+
+    const reviewTemplate = document.querySelector(".review-template").content;
+    const refreshReviewsTable = async () => {
+        const reviews = await (await fetch("/panel/reviews", {method: "GET"})).json() || [];
+        reviewsTable.querySelectorAll(".review").forEach(e => e.remove());
+
+        reviews.forEach(e => {
+            const clone = reviewTemplate.cloneNode(true);
+
+            clone.querySelector(".id").innerText = e.id;
+            clone.querySelector(".id").title = e.id;
+            clone.querySelector(".name").innerText = e.name;
+            clone.querySelector(".company").innerText = e.company;
+            clone.querySelector(".avatar > img").src = "/avatars/" + e.avatar;
+            clone.querySelector(".avatar > img").title = e.avatar;
+            clone.querySelector(".avatar > img").addEventListener("click", (ev) => onZoomImage(ev.currentTarget));
+            clone.querySelector(".rtl").innerText = e.rtl;
+            clone.querySelector(".content").innerText = e.content;
+            clone.querySelector(".actions > .delete").dataset.id = e.id;
+            clone.querySelector(".actions > .delete").dataset.related = "review";
+            clone.querySelector(".actions > .delete").addEventListener("click", (ev) => onShowDeleteModal(ev.currentTarget));
+
+            reviewsTable.querySelector("tbody").appendChild(clone);
+        });
+    }
+
+    const addProjectForm = document.querySelector(".projects form");
+    const addProject = async (e) => {
+        e.preventDefault();
+
+        await fetch("/panel/projects/add", {
+            body: new FormData(addProjectForm),
+            method: "POST"
+        });
+
+        addProjectForm.reset();
+
+        await refreshProjectsTable();
+    }
+
+    const addReviewForm = document.querySelector(".reviews form");
+    const addReview = async (e) => {
+        e.preventDefault();
+
+        const formData = new FormData(addReviewForm);
+        formData.set("rtl", addReviewForm.querySelector("#rtl").checked);
+        await fetch("/panel/reviews/add", {
+            body: formData,
+            method: "POST"
+        });
+
+        addReviewForm.reset();
+
+        await refreshReviewsTable();
+    }
+
+    const removeProject = async (id) => {
+        await fetch("/panel/projects/delete", {
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({id}),
+            method: "POST"
+        });
+
+        await refreshProjectsTable();
+    }
+
+    const removeReview = async (id) => {
+        await fetch("/panel/reviews/delete", {
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({id}),
+            method: "POST"
+        });
+
+        await refreshReviewsTable();
+    }
+
+    const deleteModal = document.querySelector("#delete-modal");
+    const onShowDeleteModal = (target) => {
+        deleteModal.dataset.id = target.dataset.id;
+        deleteModal.dataset.related = target.dataset.related;
+        deleteModal.querySelector(".id").innerText = target.dataset.id;
+    }
+
+    const onConfirmDelete = () => {
+        if (deleteModal.dataset.related === "project") {
+            removeProject(deleteModal.dataset.id);
+        } else if (deleteModal.dataset.related === "review") {
+            removeReview(deleteModal.dataset.id);
+        }
+    }
+
+    const zoomModal = document.querySelector("#zoom-modal");
+    const onZoomImage = (target) => {
+        zoomModal.querySelector(".zoom-image").src = target.src;
+    }
+
+    refreshProjectsTable();
+    refreshReviewsTable();
+
+    addProjectForm.addEventListener("submit", addProject);
+    addReviewForm.addEventListener("submit", addReview);
+    document.querySelector("#confirm-delete").addEventListener("click", onConfirmDelete);
+</script>
+</body>
+</html>

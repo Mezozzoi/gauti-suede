@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" class="svg-pi svg-pi-25">
+  <defs>
+    <style>
+      .svg-pi {
+        width: 100px;
+        height: 100px;
+        transform: scale(-1, 1) rotate(-90deg);
+      }
+
+      .svg-pi-indicator {
+        stroke: #ff6b6c;
+        stroke-dasharray: 292.17px;
+        stroke-linecap: round;
+      }
+
+      .svg-pi-indicator {
+        cx: 50px;
+        cy: 50px;
+        r: 46.5px;
+        fill: transparent;
+        stroke-width: 7px;
+      }
+
+      .svg-pi-indicator {
+        stroke-dashoffset: calc(292.17px * (1 - 0.95));
+      }
+    </style>
+  </defs>
+  <circle shape-rendering="auto" class="svg-pi-indicator" />
+</svg>
